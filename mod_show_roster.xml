@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.1"
+	client="site"
+	method="upgrade">
+	<name>Show Roster</name>
+	<author>Joseph P. Gibson</author>
+	<creationDate>December 2016</creationDate>
+	<copyright>Copyright (C) 2015 Joseph P. Gibson. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>jgibson@usps.org</authorEmail>
+	<version>1.0</version>
+	<authorUrl>www.joesboat.org</authorUrl>
+	<description>Module - mod_show_roster.  Displays a list of members obtained from District 5 Databases.  Should only be available to logged in District 5 members. Each member name display will meet usps discloseure policy.
+	Members may be listed for complete district or for the logged in members squadron.  A full district list is the default.
+	Similar to mod_show_members that was developed for the usps.org SSS and SDS project.  
+	</description>
+	<files>
+		<filename module="mod_show_roster">mod_show_roster.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>		
+		<filename>mod_show_roster.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+			<fieldset name="debug" label="Debug Controls">
+                <field 	name="siteLog" 
+                		type="text" 
+                		size="1" 
+                		label="Activate Logging" 
+                		description="Set to 1(true) to activate logging in template routines."/>
+			</fieldset>
+			<fieldset name="roster" label="Roster Controls">
+				<field 	name="roster_type" 
+						label="Roster Type" 
+						description="Determines what member group will be listed."
+						type="radio"
+						default="d5"
+				>
+					<option value='4785'>Rockville Squadron Roster</option>
+					<option value="sqd">Member's Squadron Roster</option>
+					<option value="d5">District 5 Roster</option>
+				</field>
+				<field 	name="show-details" 
+						type="menuitem" 
+						menu_type="not-displayed"
+						default="45" 
+						label="Select the menu-item to diplay a member's profile." 
+						description="Each entry in the displayed list provides a link to a 'module' that can display additional detail on the member.  Select the menu item that will call that 'Module'" 
+				/>
+			</fieldset>
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+					default="single_line"    />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

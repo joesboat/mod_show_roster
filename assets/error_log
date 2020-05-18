@@ -1,0 +1,1 @@
+[05-Sep-2018 15:22:10 America/New_York] PHP Warning:  mysqli::mysqli(): (42000/1226): User 'uspsd5_jos2' has exceeded the 'max_user_connections' resource (current value: 30) in /home/uspsd5/public_html/libraries/usps/connectMysqliDatabase.php on line 21
