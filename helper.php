@@ -10,6 +10,7 @@
 defined('_JEXEC') or die;
 jimport('usps.tableD5VHQAB');
 jimport('usps.includes.routines');
+jimport("usps/dbUSPSd5WebSites");
 class mod_show_member_helper
 {
 //*******************************************************
@@ -36,11 +37,11 @@ static function getDistrictMembers($distno = 5, $menu){
 	return $members;
 }
 //*******************************************************
-static function getSquadronMembers($squad_no){
+static function getSquadronMembers($squad_no, $menu){
 	$vhqab = JoeFactory::getLibrary("USPSd5tableVHQAB");
 	$squad_no = sprintf("%04d",$squad_no);
 	$list = $vhqab->getSquadronMembers($squad_no);
-	$members = mod_show_member_helper::getMemberList($list,$vhqab);
+	$members = mod_show_member_helper::getMemberList($list,$menu);
 	$vhqab->close();
 	return $members;
 	// Get the list and call GetList format for display
@@ -59,6 +60,12 @@ static function get_squadron_number_from_certificate($certno){
 	$squad_no = sprintf("%04d",$vhqab->getSquadNumber($certno));
 	$vhqab->close();
 	return $squad_no;		
+}
+//*******************************************************
+static function getUpdateDate(){
+	$websites = JoeFactory::getLibrary("USPSd5dbWebSites","local");
+	$blobs = $websites->getBlobsObject();
+	return $blobs->get_roster_update_date();	
 }
 } // end of class
 //****************************************************************

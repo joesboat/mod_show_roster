@@ -19,6 +19,7 @@ $year = 0;
 <!--Rank, Name, Grade-->
 <h4 class='text-center'> <?php echo $heading; ?> </h4>
 <!--Contact Information-->
+<div style="height:400px;overflow: scroll; "  >
 <table class='table'>
 	<tr>
 		<th> Name</th>
@@ -46,4 +47,6 @@ $year = 0;
 	}
 ?>
 	</table>
+</div>
+<p>Roster last updated on <?php echo $updated;?></p>
 </form>

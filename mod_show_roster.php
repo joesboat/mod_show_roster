@@ -19,16 +19,17 @@ $loging = $params->get("siteLog");
 $source = $params->get('roster_type');
 $fields = "certificate,last_name,first_name,grade,rank,email,telephone,cell_phone,nickname,nn_prf,spouse";
 
+$updated = mod_show_member_helper::getUpdateDate();
 if ($source == '4785'){
 	$squad_name = "Rockville Sail & Power Squadron";
 	$heading = "$squad_name Members";
-	$list = mod_show_member_helper::getSquadronMembers($source);
+	$list = mod_show_member_helper::getSquadronMembers($source,$menu);
 } elseif ($source == 'sqd'){
 	//$sqds = new tableSquadrons($db_d5,'');
 	$user = JFactory::getUser();
 	$squad_no = mod_show_member_helper::get_squadron_number_from_certificate($user->username);
 	$heading = mod_show_member_helper::getSquadronName($squad_no) . " Members"; 
-	$list = mod_show_member_helper::getSquadronMembers($squad_no);
+	$list = mod_show_member_helper::getSquadronMembers($squad_no,$menu);
 } else {
 	$heading = "District 5 Members";
 	$list = mod_show_member_helper::getDistrictMembers("5",$menu);
